@@ -417,3 +417,7 @@ This repo contains the OakInk2 dataset toolkit (oakink2_toolkit) -- a Python pac
     ```bash
     conda install libffi=3.3
     ```
+
+3. `oakink2_viz_gui` exits with `This application failed to start because no Qt platform plugin could be initialized.`
+
+    You need a desktop enviroment to run the visualization application. `Xrdp` or `TigerVNC` could be a good starting point.
