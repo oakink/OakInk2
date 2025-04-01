@@ -43,6 +43,7 @@ This repo contains the OakInk2 dataset toolkit (oakink2_toolkit) -- a Python pac
 ## Updates
 
 + [2024-12] Some annotation files in the dataset repository were not successfully uploaded, causing `git-lfs` to fail to point to the correct files. These annotation files have been re-uploaded to fix this error. Therefore, before and after this fix, the number of annotation files downloaded using the `huggingface-cli` will differ (resulting in the failure of using offset to index sequences). When using the dataset, please ensure to update it to the latest commit using the `huggingface-cli`.
++ [2025-04] `object_preview.tar` is added back for backward compatibility reasons. The content is now the same as `object_raw.tar`.
 
 ## Setup dataset files.
 
