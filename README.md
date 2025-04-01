@@ -59,6 +59,7 @@ data
 |   `-- scene_0x__y00z++00000000000000000000__YYYY-mm-dd-HH-MM-SS
 |-- anno_preview
 |   `-- scene_0x__y00z++00000000000000000000__YYYY-mm-dd-HH-MM-SS.pkl
+|-- object_preview (deprecated, kept for compatibility)
 |-- object_raw
 |-- object_repair
 |-- object_affordance
