@@ -40,22 +40,30 @@
 
 This repo contains the OakInk2 dataset toolkit (oakink2_toolkit) -- a Python package that provides data loading, splitting, and visualization.
 
+## Updates
+
++ [2024-12] Some annotation files in the dataset repository were not successfully uploaded, causing `git-lfs` to fail to point to the correct files. These annotation files have been re-uploaded to fix this error. Therefore, before and after this fix, the number of annotation files downloaded using the `huggingface-cli` will differ (resulting in the failure of using offset to index sequences). When using the dataset, please ensure to update it to the latest commit using the `huggingface-cli`.
+
 ## Setup dataset files.
 
-    Download tarballs from [huggingface](https://huggingface.co/datasets/kelvin34501/OakInk-v2).
-    You will need the data tarball and the preview version annotation tarball for at least one sequence, the object_raw tarball, the object_repair tarball and the program tarball.
-    Organize these files as follow:
-    ```
-    data
-    |-- data
-    |   `-- scene_0x__y00z++00000000000000000000__YYYY-mm-dd-HH-MM-SS
-    |-- anno_preview
-    |   `-- scene_0x__y00z++00000000000000000000__YYYY-mm-dd-HH-MM-SS.pkl
-    |-- object_raw
-    |-- object_repair
-    |-- object_affordance
-    `-- program
-    ```
+Download tarballs from [huggingface](https://huggingface.co/datasets/kelvin34501/OakInk-v2).
+
+There is an example download script located at `script/download.py`, which use `./hub` under current working directory as cache directory and download the dataset to `./OakInk-v2-hub`. Please provide enough disk space for the cache.
+
+You will need the data tarball and the preview version annotation tarball for at least one sequence, the object_raw tarball, the object_repair tarball and the program tarball.
+Organize these files as follow:
+
+```
+data
+|-- data
+|   `-- scene_0x__y00z++00000000000000000000__YYYY-mm-dd-HH-MM-SS
+|-- anno_preview
+|   `-- scene_0x__y00z++00000000000000000000__YYYY-mm-dd-HH-MM-SS.pkl
+|-- object_raw
+|-- object_repair
+|-- object_affordance
+`-- program
+```
 
 ## OakInk2 Toolkit
 
@@ -77,6 +85,25 @@ This repo contains the OakInk2 dataset toolkit (oakink2_toolkit) -- a Python pac
     ```
 
     It the command runs without error, the installation is successful.
+
+3. Quick start: using the toolkit to load the sequences.
+
+    ```python
+    from oakink2_toolkit.dataset import OakInk2__Dataset
+
+    # Load the dataset
+    oi2_data = OakInk2__Dataset(
+        dataset_prefix='data',
+        return_instantiated=True,   # set to False if only metainfo wanted
+        anno_offset='anno_preview',
+        obj_offset='object_repair', # set to 'object_raw' for downsampled object raw scans
+        affordance_offset="object_affordance",
+    )
+
+    # Load sequence
+    complex_task_data = oi2_data.load_complex_task(seq_key)
+    primitive_task_data_list = oakink2_dataset.load_primitive_task(complex_task_data)
+    ```
 
 
 ## OakInk2 Preview-Tool
