@@ -105,6 +105,10 @@ data
     # Load sequence
     complex_task_data = oi2_data.load_complex_task(seq_key)
     primitive_task_data_list = oakink2_dataset.load_primitive_task(complex_task_data)
+
+    # Load a certain object & affordance
+    obj_id = primitive_task_data_list[1].task_obj_list[0]
+    affordance_data = d.load_affordance(obj_id, return_instantiated=True) # of set return_instantiated for metainfo only 
     ```
 
 
