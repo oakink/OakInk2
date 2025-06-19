@@ -454,3 +454,11 @@ data
 3. `oakink2_viz_gui` exits with `This application failed to start because no Qt platform plugin could be initialized.`
 
     You need a desktop enviroment to run the visualization application. `Xrdp` or `TigerVNC` could be a good starting point.
+
+4. `oakink2_viz_gui` exits with `qt.qpa.plugin: From 6.5.0, xcb-cursor0 or libxcb-cursor0 is needed to load the Qt xcb platform plugin.`
+
+    Install `libxcb-cursor-dev`:
+
+    ```bash
+    sudo apt-get install -y libxcb-cursor-dev
+    ```
