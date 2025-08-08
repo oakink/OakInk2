@@ -462,3 +462,28 @@ data
     ```bash
     sudo apt-get install -y libxcb-cursor-dev
     ```
+
+5. `oakini2_viz_seg` can not find font:
+    ```
+    Traceback (most recent call last):
+    File "/mnt/homes/xinyu-ldap/oakink2-preview/.venv/bin/oakink2_viz_seg3d", line 33, in <module>
+        sys.exit(load_entry_point('oakink2-toolkit', 'console_scripts', 'oakink2_viz_seg3d')())
+    File "/mnt/homes/xinyu-ldap/oakink2-preview/src/oakink2_preview/launch/viz/seg_3d.py", line 302, in main
+        run(run_cfg)
+    File "/mnt/homes/xinyu-ldap/oakink2-preview/src/oakink2_preview/launch/viz/seg_3d.py", line 273, in run
+        img = caption_combined_view(img, ptask_data.task_desc)
+    File "/mnt/homes/xinyu-ldap/oakink2-preview/src/oakink2_preview/util/vis_cv2_util.py", line 17, in caption_combined_view
+        font = ImageFont.truetype(font, size=20)
+    File "/mnt/homes/xinyu-ldap/oakink2-preview/.venv/lib/python3.10/site-packages/PIL/ImageFont.py", line 807, in truetype
+        return freetype(font)
+    File "/mnt/homes/xinyu-ldap/oakink2-preview/.venv/lib/python3.10/site-packages/PIL/ImageFont.py", line 804, in freetype
+        return FreeTypeFont(font, size, index, encoding, layout_engine)
+    File "/mnt/homes/xinyu-ldap/oakink2-preview/.venv/lib/python3.10/site-packages/PIL/ImageFont.py", line 244, in __init__
+        self.font = core.getfont(
+    OSError: cannot open resource
+    ```
+
+    Solution: install package `fonts-freefont-ttf` for ubuntu:
+    ```bash
+    sudo apt install fonts-freefont-ttf
+    ```
