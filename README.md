@@ -126,6 +126,10 @@ data
             conda create -p ./.conda python=3.10
             conda activate ./.conda
             ```
+            On modern systems (*e.g.*, ubuntu 24.04), you may need to use a more recent standard library:
+            ```bash
+            conda install -c conda-forge libstdcxx-ng=12 # suppose the system toolchain is gcc-12
+            ```
 
         2. `venv` approach
             First use `pyenv` or other tools to install a python intepreter of version 3.10. Here 3.10.16 is used as example:
