@@ -4,7 +4,7 @@ cython
 pip-tools>=7.0.0
 # basic
 typing_extensions>=4.8.0
-numpy
+numpy<2
 scipy
 zarr
 pillow
